@@ -7,6 +7,7 @@ var postcssimport = require('postcss-import');
 var tailwind = require('tailwindcss');
 var sourcemaps = require('gulp-sourcemaps');
 var nested = require('postcss-nested');
+var purgecss = require('gulp-purgecss');
 
 var concat = require('gulp-concat');
 //var rename = require('gulp-rename');
@@ -23,8 +24,12 @@ gulp.task('sass', function () {
   return gulp.src('./src/scss/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss(processors))
+    .pipe(purgecss({
+      content: ['./**/*.php']
+    }))
     .pipe(gulp.dest('./dist/css'));
 });
+
 
 gulp.task('sass-min', function () {
   var processors = [
@@ -37,8 +42,12 @@ gulp.task('sass-min', function () {
   return gulp.src('./src/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss(processors))
+    .pipe(purgecss({
+      content: ['./**/*.php']
+    }))
     .pipe(gulp.dest('./dist/css'));
 });
+
 
 gulp.task('scripts', function () {
   var jsFiles = './src/js/**/*.js',
@@ -47,6 +56,7 @@ gulp.task('scripts', function () {
     .pipe(concat('scripts.js'))
     .pipe(gulp.dest(jsDest));
 });
+
 
 gulp.task('scripts-min', function () {
   var jsFiles = './src/js/**/*.js',
@@ -61,12 +71,14 @@ gulp.task('scripts-min', function () {
 
 //compile and watch
 gulp.task('watch', function () {
+  gulp.watch('./**/*.php', gulp.series('sass'));
   gulp.watch('src/scss/*.scss', gulp.series('sass'));
   gulp.watch('src/js/**/*.js', gulp.series('scripts'));
 });
 
-//compile and minify
+//compile and minify, watch
 gulp.task('build', function () {
+  gulp.watch('./**/*.php', gulp.series('sass-min'));
   gulp.watch('src/scss/**/*.scss', gulp.series('sass-min'));
   gulp.watch('src/js/**/*.js', gulp.series('scripts-min'));
 });
