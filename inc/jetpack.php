@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package brightrock_2020
+ * @package undersail
  */
 
 /**
@@ -14,11 +14,11 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function brightrock_2020_jetpack_setup() {
+function undersail_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
-		'render'    => 'brightrock_2020_infinite_scroll_render',
+		'render'    => 'undersail_infinite_scroll_render',
 		'footer'    => 'page',
 	) );
 
@@ -28,7 +28,7 @@ function brightrock_2020_jetpack_setup() {
 	// Add theme support for Content Options.
 	add_theme_support( 'jetpack-content-options', array(
 		'post-details'    => array(
-			'stylesheet' => 'brightrock-2020-style',
+			'stylesheet' => 'undersail-style',
 			'date'       => '.posted-on',
 			'categories' => '.cat-links',
 			'tags'       => '.tags-links',
@@ -42,12 +42,12 @@ function brightrock_2020_jetpack_setup() {
 		),
 	) );
 }
-add_action( 'after_setup_theme', 'brightrock_2020_jetpack_setup' );
+add_action( 'after_setup_theme', 'undersail_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function brightrock_2020_infinite_scroll_render() {
+function undersail_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :

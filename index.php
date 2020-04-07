@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package brightrock_2020
+ * @package undersail
  */
 
 get_header();

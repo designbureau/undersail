@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package brightrock_2020
+ * @package undersail
  */
 
 ?>
@@ -14,14 +14,14 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
-	<?php brightrock_2020_post_thumbnail(); ?>
+	<?php undersail_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
 		the_content();
 
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'brightrock-2020' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'undersail' ),
 			'after'  => '</div>',
 		) );
 		?>
@@ -34,7 +34,7 @@
 				sprintf(
 					wp_kses(
 						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'brightrock-2020' ),
+						__( 'Edit <span class="screen-reader-text">%s</span>', 'undersail' ),
 						array(
 							'span' => array(
 								'class' => array(),

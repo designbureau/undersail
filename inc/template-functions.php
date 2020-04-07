@@ -2,7 +2,7 @@
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package brightrock_2020
+ * @package undersail
  */
 
 /**
@@ -11,7 +11,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function brightrock_2020_body_classes( $classes ) {
+function undersail_body_classes( $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -24,14 +24,14 @@ function brightrock_2020_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'brightrock_2020_body_classes' );
+add_filter( 'body_class', 'undersail_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function brightrock_2020_pingback_header() {
+function undersail_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		printf( '<link rel="pingback" href="%s">', esc_url( get_bloginfo( 'pingback_url' ) ) );
 	}
 }
-add_action( 'wp_head', 'brightrock_2020_pingback_header' );
+add_action( 'wp_head', 'undersail_pingback_header' );
