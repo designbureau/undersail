@@ -123,9 +123,12 @@ function undersail_scripts() {
 	wp_enqueue_style( 'base-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'undersail-style', get_stylesheet_directory_uri() . '/dist/css/style.css'  );
 
+	wp_enqueue_script( 'undersail-navigation', get_template_directory_uri() . '/dist/js/scripts.js', array(), '1.0', true );
+
+
   //include these in build
-	wp_enqueue_script( 'undersail-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-	wp_enqueue_script( 'undersail-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	//wp_enqueue_script( 'undersail-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	//wp_enqueue_script( 'undersail-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
